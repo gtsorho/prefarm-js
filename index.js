@@ -4,11 +4,8 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
-
-  header('Access-Control-Allow-Origin', '*');
-  header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-
+var cors = require('cors');
+app.use(cors());
 
 app.use(express.static(path.join(__dirname)));
 app.use("/css", express.static(__dirname));
