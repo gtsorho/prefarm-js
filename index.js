@@ -18,10 +18,12 @@ var allowCrossDomain = function(req, res, next) {
   }
 };
 
+app.use(allowCrossDomain);
 app.use(express.static(path.join(__dirname)));
 app.use("/css", express.static(__dirname));
 app.use("/media", express.static(__dirname + '/media'));
 app.use("/js", express.static(__dirname + '/js'));
+
 
 // viewed at based directory http://localhost:8080/
 app.get('/', function (req, res) {
