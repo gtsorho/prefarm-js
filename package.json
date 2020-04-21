@@ -1,0 +1,24 @@
+{
+  "name": "esp_express",
+  "version": "1.0.0",
+  "description": "esp application",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/bin/gulp",
+    "start": "node index.js"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gtsorho/esp-html.git"
+  },
+  "author": "gtsorho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gtsorho/esp-html/issues"
+  },
+  "homepage": "https://github.com/gtsorho/esp-html#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
