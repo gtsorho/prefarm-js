@@ -438,7 +438,7 @@
      
 
     $.ajax({
-      url: "http://127.0.0.1:8000/api/espdata/user",
+      url: "https://prefarmapi.herokuapp.com/api/espdata/user",
       method: "get",
       headers: {
         "Authorization": `Bearer ${token}`
@@ -467,7 +467,7 @@
 
 
     $.ajax({
-      url: 'http://127.0.0.1:8000/api/espdata/' + id,
+      url: 'https://prefarmapi.herokuapp.com/api/espdata/' + id,
       method: "delete",
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -479,7 +479,7 @@
 
 
     $.ajax({
-      url: "http://127.0.0.1:8000/api/espdata",
+      url: "https://prefarmapi.herokuapp.com/api/espdata",
       method: "get",
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -495,7 +495,7 @@
     $('#save_set').click(function (e) {
       e.preventDefault();
       $.ajax({
-        url: 'http://127.0.0.1:8000/api/espdata/profile_update/' + id,
+        url: 'https://prefarmapi.herokuapp.com/profile_update/' + id,
         method: 'patch',
         headers: {
           "Authorization": `Bearer ${token}`
@@ -560,7 +560,7 @@
     $('#logout_btn').click(function (e) {
       e.preventDefault();
       $.ajax({
-        url: "http://127.0.0.1:8000/api/espdata/logout",
+        url: "https://prefarmapi.herokuapp.com/api/espdata/logout",
         method: 'post',
         headers: {
           "Authorization": `Bearer ${token}`

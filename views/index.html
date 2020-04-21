@@ -222,7 +222,7 @@ $(document).ready(function(){
   var client_id;
   var client_secret;
   $.ajax({
-          url: "http://127.0.0.1:8000/api/login",
+          url: "https://prefarmapi.herokuapp.com/api/login",
           method: 'GET',
           dataType: "json",
           success: function(response) {
@@ -236,7 +236,7 @@ $(document).ready(function(){
         var email = $('#sign_email').val();
         var password = $('#sign_password').val();
         $.ajax({
-          url: "http://127.0.0.1:8000/oauth/token",
+          url: "https://prefarmapi.herokuapp.com/oauth/token",
           method: 'POST',
           dataType: 'json',
           data:{
@@ -265,7 +265,7 @@ $(document).ready(function(){
     $('#signup_submit').click(function(e){
       e.preventDefault();
       $.ajax({
-        url:"http://127.0.0.1:8000/api/espdata/user_registration",
+        url:"https://prefarmapi.herokuapp.com/api/espdata/user_registration",
         method:'post',
         data: {
           "firstName": $('#signup_fnamme').val(),
@@ -345,7 +345,7 @@ $(document).ready(function(){
                 var email = response.data.email
                 var password = $('#signup_password').val();
               $.ajax({
-                url: "http://127.0.0.1:8000/oauth/token",
+                url: "https://prefarmapi.herokuapp.com/oauth/token",
                 method: 'POST',
                 dataType: 'json',
                 data:{
