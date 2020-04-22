@@ -502,7 +502,7 @@
     $('#save_set').click(function (e) {
       e.preventDefault();
       $.ajax({
-        url: 'https://prefarmapi.herokuapp.com/profile_update/' + user_id,
+        url: 'https://prefarmapi.herokuapp.com/profile_update/1',
         method: 'patch',
         headers: {
           "Authorization": `Bearer ${token}`
