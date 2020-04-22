@@ -221,6 +221,7 @@ $(document).ready(function(){
 
   var client_id;
   var client_secret;
+  console.log(client_secret)
   $.ajax({
           url: "https://prefarmapi.herokuapp.com/api/login",
           method: 'GET',
@@ -228,7 +229,7 @@ $(document).ready(function(){
           success: function(response) {
             client_id = response.client_id
             client_secret = response.client_secret
-            console.log(client_secret)
+            
             }
     })
     $('#login_btn').on( 'click', function(e){
