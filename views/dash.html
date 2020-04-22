@@ -479,7 +479,7 @@
       },
       error: function (response) {
         console.log(response)
-        console.log(user_id)
+        console.log('mee'+user_id)
 
       }
     })
@@ -502,7 +502,7 @@
     $('#save_set').click(function (e) {
       e.preventDefault();
       $.ajax({
-        url: 'https://prefarmapi.herokuapp.com/profile_update/1',
+        url: 'https://prefarmapi.herokuapp.com/api/espdata/profile_update/1',
         method: 'patch',
         headers: {
           "Authorization": `Bearer ${token}`
