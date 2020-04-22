@@ -436,7 +436,7 @@
       //   window.location = 'index.html'
       // }
      
-      console.log(id)
+      
 
     $.ajax({
       url: "https://prefarmapi.herokuapp.com/api/espdata/user",
@@ -459,6 +459,7 @@
         $("#set_email").val(response[0].email);
 
         id = response[0].id
+        console.log(id)
       },
 
       error: function (response) {
