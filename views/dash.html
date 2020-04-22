@@ -469,7 +469,7 @@
 
 
     $.ajax({
-      url: 'https://prefarmapi.herokuapp.com/api/espdata/'+ user_id,
+      url:  `https://prefarmapi.herokuapp.com/api/espdata/ ${user_id}`,
       method: "delete",
       headers: {
         "Authorization": `Bearer ${token}`,
