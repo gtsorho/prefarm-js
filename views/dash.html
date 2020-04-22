@@ -431,7 +431,8 @@
   $(document).ready(function () {
     
     var token = localStorage.getItem('access_token')
-    var id
+    var user_id
+    console.log(id)
       // if(token == 'null'){
       //   window.location = 'index.html'
       // }
@@ -458,8 +459,8 @@
         $("#set_sname").val(response[0].surname);
         $("#set_email").val(response[0].email);
 
-        id = response[0].id
-        console.log(id)
+        user_id = response[0].id
+        
       },
 
       error: function (response) {
