@@ -446,6 +446,8 @@
       },
       dataType: "json",
       success: function (response) {
+        // response[0] 
+        console.log(token)
         $('#user_intro').html('Hi ' + response[0].firstName + ',')
         $('#profile_name').html(response[0].firstName + ' ' + response[0].surname)
         $('#profile_email').html(response[0].email)
@@ -467,14 +469,13 @@
 
 
     $.ajax({
-      url:  'https://prefarmapi.herokuapp.com/api/espdata/1',
+      url: 'https://prefarmapi.herokuapp.com/api/espdata/1',
       method: "delete",
       headers: {
         "Authorization": `Bearer ${token}`,
       },
       success: function (response) {
         console.log(response)
-
       },
       error: function (response) {
         console.log(response)
