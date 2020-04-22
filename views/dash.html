@@ -432,7 +432,6 @@
     
     var token = localStorage.getItem('access_token')
     var user_id
-    console.log(user_id)
       // if(token == 'null'){
       //   window.location = 'index.html'
       // }
@@ -470,13 +469,18 @@
 
 
     $.ajax({
-      url: 'https://prefarmapi.herokuapp.com/api/espdata/' + id,
+      url: 'https://prefarmapi.herokuapp.com/api/espdata/' + user_id,
       method: "delete",
       headers: {
         "Authorization": `Bearer ${token}`,
       },
       success: function (response) {
         console.log(response)
+      },
+      error: function (response) {
+        console.log(response)
+        console.log(user_id)
+
       }
     })
 

@@ -249,7 +249,7 @@ $(document).ready(function(){
             "scope":"",
           },
           success: function (response) {
-            console.log(client_secret)
+            
             var token = response.access_token;
             window.localStorage.setItem('access_token',token)
             window.location ="dash"
