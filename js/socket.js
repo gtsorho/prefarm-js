@@ -21,7 +21,7 @@ console.log(token)
   }
 })
 
-var x
+// var x
 var pusher = new Pusher('6fbd3a4d78bbe2c53fbd');
 var channel = pusher.subscribe('my-channel'+ user_id);
 channel.bind('my-event', function(data) {
@@ -37,16 +37,16 @@ channel.bind('my-event', function(data) {
     myChart.update();
   })
 
-  x = data.message.message.length
- for(i=20; i < x; i++){
-  myChart.data.labels.shift();
-  myChart.data.datasets[0].data.shift();
-  myChart.data.datasets[1].data.shift();
-  myChart.data.datasets[2].data.shift();
-  myChart.data.datasets[3].data.shift();
-  myChart.data.datasets[4].data.shift();
-  myChart.update();
- }
+//   x = data.message.message.length
+//  for(i=20; i < x; i++){
+//   myChart.data.labels.shift();
+//   myChart.data.datasets[0].data.shift();
+//   myChart.data.datasets[1].data.shift();
+//   myChart.data.datasets[2].data.shift();
+//   myChart.data.datasets[3].data.shift();
+//   myChart.data.datasets[4].data.shift();
+//   myChart.update();
+//  }
 
   $('#temp_val').html(data.message.singleData.temperature)
   $('#humidity_val').html(data.message.singleData.humidity)
@@ -56,7 +56,7 @@ channel.bind('my-event', function(data) {
 
 }else if(data.message.status == 'single'){
 
-  x=x+1
+  // x=x+1
   // console.log(x)
 
   myChart.data.labels.push(data.message.message.created_at);
@@ -67,15 +67,15 @@ channel.bind('my-event', function(data) {
   myChart.data.datasets[4].data.push(data.message.message.light);
   myChart.update();
 
-  if(x>20){
-    myChart.data.labels.shift();
-    myChart.data.datasets[0].data.shift();
-    myChart.data.datasets[1].data.shift();
-    myChart.data.datasets[2].data.shift();
-    myChart.data.datasets[3].data.shift();
-    myChart.data.datasets[4].data.shift();
-    myChart.update();
-   }
+  // if(x>20){
+  //   myChart.data.labels.shift();
+  //   myChart.data.datasets[0].data.shift();
+  //   myChart.data.datasets[1].data.shift();
+  //   myChart.data.datasets[2].data.shift();
+  //   myChart.data.datasets[3].data.shift();
+  //   myChart.data.datasets[4].data.shift();
+  //   myChart.update();
+  //  }
    
 
 
