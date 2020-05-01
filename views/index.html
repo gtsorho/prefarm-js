@@ -221,7 +221,6 @@ $(document).ready(function(){
 
   var client_id;
   var client_secret;
-  
   $.ajax({
           url: "https://prefarmapi.herokuapp.com/api/login",
           method: 'GET',
@@ -229,7 +228,6 @@ $(document).ready(function(){
           success: function(response) {
             client_id = response.client_id
             client_secret = response.client_secret
-            
             }
     })
     $('#login_btn').on( 'click', function(e){
@@ -249,17 +247,29 @@ $(document).ready(function(){
             "scope":"",
           },
           success: function (response) {
-            
             var token = response.access_token;
+              $.ajax({
+              url: "https://prefarmapi.herokuapp.com/api/espdata/user",
+              method: "get",
+              headers: {
+                "Authorization": `Bearer ${token}`
+              },
+              dataType: "json",
+              success: function (response) {
+                id = response[0].id
+                window.localStorage.setItem('user_id',id)
+                console.log(id)
+                window.location ="dash.html"
+              }
+            })
+            
             window.localStorage.setItem('access_token',token)
-            window.location ="dash"
+            
           },
           error:function(response){
             $('#signin_msg').fadeIn()
             $('#signin_msg').text("Invalid Credentials")
             $('#signin_msg').fadeOut(5000)
-
-            console.log(response)
 
           }
         })
@@ -363,7 +373,8 @@ $(document).ready(function(){
                 success: function (response) {
                   var token = response.access_token;
                   window.localStorage.setItem('access_token',token)
-                  window.location ="dash"
+                  console.log(response)
+                  window.location ="dash.html"
                 }
               })
             }
