@@ -5,7 +5,7 @@ $(document).ready(function(){
 
   var token = localStorage.getItem('access_token')
   var user_id = localStorage.getItem('user_id')
-// console.log(user_id)
+console.log(user_id)
 console.log(token)
 
 
@@ -25,8 +25,7 @@ var x
 var pusher = new Pusher('6fbd3a4d78bbe2c53fbd');
 var channel = pusher.subscribe('my-channel'+ user_id);
 channel.bind('my-event', function(data) {
-  // console.log(data)
-  
+  console.log(data)
   if(data.message.status == 'plural'){
   $.each(data.message.message, function (i) {
     myChart.data.labels.push(data.message.message[i].created_at);
