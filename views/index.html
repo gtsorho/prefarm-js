@@ -259,7 +259,7 @@ $(document).ready(function(){
                 id = response[0].id
                 window.localStorage.setItem('user_id',id)
                 console.log(id)
-                window.location ="dash.html"
+                window.location = "dash"
               }
             })
             
@@ -374,7 +374,7 @@ $(document).ready(function(){
                   var token = response.access_token;
                   window.localStorage.setItem('access_token',token)
                   console.log(response)
-                  window.location ="dash.html"
+                  window.location ="dash"
                 }
               })
             }
