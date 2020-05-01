@@ -213,12 +213,6 @@
 
 
 $(document).ready(function(){
-    // var access = localStorage.getItem('access_token')
-    //  if(access != 'null'){
-    //    window.location = 'dash.html'
-    //  }
-      
-
   var client_id;
   var client_secret;
   $.ajax({
@@ -258,7 +252,7 @@ $(document).ready(function(){
               success: function (response) {
                 id = response[0].id
                 window.localStorage.setItem('user_id',id)
-                console.log(id)
+                // console.log(id)
                 window.location ="dash"
               }
             })
@@ -378,11 +372,6 @@ $(document).ready(function(){
                 }
               })
             }
-        
-        
-            // $('#signup_msg').show();
-            // $('#signup_msg').text('Hello <strong>'+ response.data.firstName + '</strong> please sign In');
-            // $('#signup_msg').hide(9000);
         },
         error:function(response){
           console.log(response)
