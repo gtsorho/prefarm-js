@@ -5,10 +5,6 @@ $(document).ready(function(){
 
   var token = localStorage.getItem('access_token')
   var user_id = localStorage.getItem('user_id')
-console.log(user_id)
-console.log(token)
-
-
 
   $.ajax({
   url: "https://prefarmapi.herokuapp.com/api/espdata",
@@ -16,28 +12,16 @@ console.log(token)
   headers: {
     "Authorization": `Bearer ${token}`,
   },
-  success: function (response) {
+  error: function (response) {
  console.log(response)
   }
 })
 
-// $.ajax({
-//   url: "https://prefarmapi.herokuapp.com/api/espdata/"+user_id,
-//   method: "delete",
-//   headers: {
-//     "Authorization": `Bearer ${token}`,
-//   },
-//   success: function (response) {
-//  console.log(response)
-//   }
-// })
 
 var x
 var pusher = new Pusher('6fbd3a4d78bbe2c53fbd');
 var channel = pusher.subscribe('my-channel'+ user_id);
-channel.bind('my-event', function(data) {
-  console.log(data)
-  
+channel.bind('my-event', function(data) {  
   if(data.message.status == 'plural'){
   $.each(data.message.message, function (i) {
     myChart.data.labels.push(data.message.message[i].created_at);
@@ -67,10 +51,7 @@ channel.bind('my-event', function(data) {
   $('#moisture_val').html(data.message.singleData.moisture)
 
 }else if(data.message.status == 'single'){
-
   x=x+1
-  console.log(x)
-
   myChart.data.labels.push(data.message.message.created_at);
   myChart.data.datasets[0].data.push(data.message.message.temperature);
   myChart.data.datasets[1].data.push(data.message.message.humidity);
