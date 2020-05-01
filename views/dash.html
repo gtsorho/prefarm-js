@@ -459,6 +459,17 @@
       }
     })
 
+      $.ajax({
+      url: "https://prefarmapi.herokuapp.com/api/espdata",
+      method: "get",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      },
+      success: function (response) {
+    console.log(response)
+      }
+    })
+
     $('#save_set').click(function (e) {
       e.preventDefault();
       $.ajax({
