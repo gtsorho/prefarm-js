@@ -213,7 +213,11 @@
 
 
 $(document).ready(function(){
-    
+    // var access = localStorage.getItem('access_token')
+    //  if(access != 'null'){
+    //    window.location = 'dash.html'
+    //  }
+      
 
   var client_id;
   var client_secret;
@@ -254,7 +258,7 @@ $(document).ready(function(){
               success: function (response) {
                 id = response[0].id
                 window.localStorage.setItem('user_id',id)
-                // console.log(id)
+                console.log(id)
                 window.location = "dash"
               }
             })
@@ -288,7 +292,8 @@ $(document).ready(function(){
         },
         dataType:'json',
         success:function(response){
-        
+          
+
             if(response.data.status == "error"){
               $.each(response.data.errors, function(i, item){
                 switch (response.data.errors[i]){
@@ -333,8 +338,23 @@ $(document).ready(function(){
                     $('#reg_pass_conf_msg').fadeOut(5000)
                     break;        
                 }
-       
+          
+            //  $('#reg_sname_msg').fadeOut(5000)
+            //  $('#reg_email_msg').fadeOut(5000)
+            //  $('#reg_phone_msg').fadeOut(5000)
+            //  $('#reg_town_msg').fadeOut(5000)
+            //  $('#reg_pass_msg').fadeOut(5000)
               });
+
+
+              console.log(response.data)
+            //  $('#reg_fname_msg').text(response.data.errors[0])
+            //  $('#reg_sname_msg').text(response.data.errors[1])
+            //  $('#reg_email_msg').text(response.data.errors[2])
+            //  $('#reg_phone_msg').text(response.data.errors[3])
+            //  $('#reg_town_msg').text(response.data.errors[4])
+            //  $('#reg_pass_msg').text(response.data.errors[5])
+
             }else{
                 var email = response.data.email
                 var password = $('#signup_password').val();
@@ -352,24 +372,17 @@ $(document).ready(function(){
                 },
                 success: function (response) {
                   var token = response.access_token;
-                  $.ajax({
-                  url: "https://prefarmapi.herokuapp.com/api/espdata/user",
-                  method: "get",
-                  headers: {
-                    "Authorization": `Bearer ${token}`
-                  },
-                  dataType: "json",
-                  success: function (response) {
-                    id = response[0].id
-                    window.localStorage.setItem('user_id',id)
-                    // console.log(id)
-                    window.location = "dash"
-                  }
-                })
                   window.localStorage.setItem('access_token',token)
+                  console.log(response)
+                  window.location ="dash"
                 }
               })
             }
+        
+        
+            // $('#signup_msg').show();
+            // $('#signup_msg').text('Hello <strong>'+ response.data.firstName + '</strong> please sign In');
+            // $('#signup_msg').hide(9000);
         },
         error:function(response){
           console.log(response)

@@ -441,7 +441,7 @@
       dataType: "json",
       success: function (response) {
         // response[0] 
-    
+        // console.log(token)
         $('#user_intro').html('Hi ' + response[0].firstName + ',')
         $('#profile_name').html(response[0].firstName + ' ' + response[0].surname)
         $('#profile_email').html(response[0].email)
@@ -480,7 +480,7 @@
         success: function (response) {
           if (response.data.status == "error") {
             $.each(response.data.errors, function (i, item) {
-              // console.log(response.data.errors[i])
+              console.log(response.data.errors[i])
               switch (response.data.errors[i]) {
                 case "The first name field is required.":
                   $("#set_fname").val(response.data.errors[i]); 
@@ -536,7 +536,7 @@
         },
         dataType: 'json',
         success: function (response) {
-          window.location = "index.html"
+          window.location = "index"
           window.localStorage.setItem('access_token',null)
           window.localStorage.setItem('user_id',null)
         }
