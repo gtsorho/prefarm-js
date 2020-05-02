@@ -10,6 +10,17 @@
   <script defer src="fontawesome-free-5.12.1-web/js/all.js"></script>
   <script src="https://js.pusher.com/5.1/pusher.min.js"></script>
 
+
+  <!-- image processing dep -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/webgl-utils.js"></script>
+  <script type="text/javascript" src="js/infragram.js"></script>
+
+  <script type="x-shader/x-vertex" id="shader-vs"></script>
+  <script type="x-shader/x-fragment" id="shader-fs-template"></script>
+  <script type="x-shader/x-fragment" id="shader-fs"></script>
+  <!-- end image processing dep -->
+
   <script type="text/javascript"> 
     window.history.forward(); 
     function noBack(e) { 
@@ -22,8 +33,8 @@
 
 <body>
   <div class="columns">
-    <!-- column to the left -->
-    <div class="column is-two-thirds" id="datacol">
+     <!-- column to the left -->
+     <div class="column is-two-thirds" id="datacol">
       <div class="container">
         <nav class="navbar " role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
@@ -32,49 +43,118 @@
               <h1 id="lgtxt"> <b> PreFarm</b></h1>
             </a>
           </div>
-        </nav>
-      </div>
 
-      <canvas id="myChart"></canvas>
-
-      <div class="box">
-        <nav class="level">
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="heading">Temprature</p>
-              <p class="title" id="temp_val"></p>
-            </div>
-          </div>
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="heading">Humidity</p>
-              <p class="title" id="humidity_val"></p>
-            </div>
-          </div>
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="heading">Rain</p>
-              <p class="title" id="rain_val"></p>
-            </div>
-          </div>
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="heading">Moisture</p>
-              <p class="title" id="moisture_val"></p>
-            </div>
-          </div>
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="heading">Light</p>
-              <p class="title" id="light_val"></p>
-            </div>
+          <div class="buttons has-addons navbar-brand" id="toggle" style="margin-top: 3.5%;margin-left: 54%;">
+            <button class="button is-success " id="chartbtn" onclick="chartbtn()">Chart</button>
+            <button class="button" id="ndvibtn" onclick="ndvibtn()">NDVI</button>
           </div>
         </nav>
       </div>
 
+      <div class="container" id="chartSec">
+        <canvas id="myChart"></canvas>
+
+        <div class="box">
+          <nav class="level">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Temprature</p>
+                <p class="title" id="temp_val"></p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Humidity</p>
+                <p class="title" id="humidity_val"></p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Rain</p>
+                <p class="title" id="rain_val"></p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Moisture</p>
+                <p class="title" id="moisture_val"></p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Light</p>
+                <p class="title" id="light_val"></p>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      
+        <div class="container page" id="ndviSec" style="padding-top:10px;">
+          <div class="content">
+            <div class="well">
+              <div class="container">
+                <form name="file-form" style="width: 50%;">
+
+                  <div class="file is-info">
+                    <label class="file-label">
+                      <input class="file-input" id="file-sel" type="file" name="resume">
+                      <span class="file-cta">
+                        <span class="file-icon">
+                          <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                          Choose a file
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                </form>
+
+                <br>
+                <br>
+
+                <span class="group" style="float: right;margin-top: -118px;">
+                  <b>Presets:</b>
+
+                  <div class="btn-group" data-toggle="buttons-radio">
+
+                    <button id="raw" class="button is-info">Raw</button>
+                    <button id="ndvi" class="button is-warning">NDVI</button>
+                    <button id="nir" class="button is-dark">NIR</button>
+                  </div>
+
+                </span>
+
+                <span id="colormaps-group" class="group" style="float:right;margin-top:-48px;display:none;">
+                  <span class="btn-toolbar">
+                    <div class="btn-group" data-toggle="buttons-radio">
+                      <button id="grey" class="button is-dark">Greyscale</button>
+                      <button id="color" class="button is-success">Color</button>
+                    </div>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div id="image-container" class="container" width="800" height="600">
+              <canvas id="canvas-image" width="600" height="400"></canvas>
+
+              <div id="colorbar-container" style="display:none;">
+                <span id="colorbar-min">-1.00</span>
+                <canvas id="colorbar"></canvas>
+                <span id="colorbar-max">1.00</span>
+              </div>
+            </div>
+            <br>
+            <button style="display:none;margin-left:30px;" id="download" class="button is-info"><i
+                class="icon-white icon-download"></i> Download</button>
+          </div>
+
+
+        </div>
+      
     </div>
-
-
     <!-- end of column to the left -->
 
 

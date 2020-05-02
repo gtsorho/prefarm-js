@@ -99,3 +99,28 @@ body,html{
 #controlcenter{
     display: none;
 }
+#chartbtn{
+    height: 35px;
+    font-size: medium;
+}
+#ndvibtn{
+    height: 35px;
+    font-size: medium;
+}
+div#image-container {
+    text-align: center;
+}
+
+div#colorbar-container {
+    display: inline-block;
+    width: 70%;
+}
+
+div#colorbar-container canvas#colorbar {
+    width: 80%;
+    height: 2em;
+    vertical-align: middle;
+}
+#ndviSec{
+    display: none;
+}

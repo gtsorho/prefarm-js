@@ -103,3 +103,26 @@ function controlcenter(){
     document.getElementById("notes").setAttribute('class','panel-block ');
     
 }
+function chartbtn(){
+    var chart = document.getElementById("chartbtn");
+    var ndvi = document.getElementById("ndvibtn");
+
+    ndvi.setAttribute('class', 'button');
+    chart.setAttribute('class','button is-success')
+
+}
+function ndvibtn(){
+  var ndvi = document.getElementById("ndvibtn");
+  var chart = document.getElementById("chartbtn");
+
+  ndvi.setAttribute('class', 'button is-danger');
+  chart.setAttribute('class','button')
+
+}
+
+$('#toggle > button').click(function() {
+  var ix = $(this).index();
+  
+  $('#chartSec').toggle( ix === 0 );
+  $('#ndviSec').toggle( ix === 1 );
+});
