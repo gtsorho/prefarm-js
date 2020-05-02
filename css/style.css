@@ -1,12 +1,10 @@
 body,html{
-    margin: 0;
-    height: 100%;
-    /* background-image: url("../media/landimage.jpg"); */
+    
+    background-image: url("../media/landimage.jpg");
     background-position: center center;
     background-repeat:  no-repeat;
     background-attachment: fixed;
     background-size:  cover;
-    background-color: rgba(34, 33, 33, 0.568);
     scroll-behavior: unset;
   
 }
@@ -20,13 +18,15 @@ body,html{
 }
 #signUp{
     display: none;
+    margin-bottom: 106px;
 }
 #signIn{
     height: 40%;
+    margin: -18px;
 }
 #signinArt{
-    height: 100%;
-    top: 45%;
+    height: 303%;
+    top: 83%;
     background-color: #cacacabb;
 }
 #signincont{
@@ -56,21 +56,14 @@ body,html{
     color: #ffffffc7;
 }
 .footer{
-    background-color: #cacacabb;
+    background-color: #cacacae6;
     padding: 1rem 1.5rem 1rem;
     bottom: 0;
-    position: absolute;
+    position: fixed;
     width: 100%;
 }
-.overlay{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    background-color: rgba(0, 0, 0, 0.432); /*dim the background*/
-  }
+
+  
 ::-webkit-scrollbar {
 	width: 10px;
 	background-color: #F5F5F5;
@@ -96,23 +89,21 @@ body,html{
     width: 50%;
     float: left;
 }
-#herotit{
+ #herotit{
     font-size: 40px;
     text-align:  left;
-    white-space: nowrap;
+    white-space: normal;
     overflow: hidden;
-    width: 40em;
-    animation: type 3s steps(60, end); 
+ 
+ 
   }
   #herosub{
     font-size: 20px;
     text-align:  left;
-    white-space: nowrap;
+    white-space:normal;
     overflow: hidden;
-    width: 40em;
-    animation: type 5s steps(60, end); 
+
   }
-  
   @keyframes type{ 
     from { width: 0; } 
   } 
