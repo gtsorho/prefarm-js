@@ -25,7 +25,7 @@ body,html{
     margin: -18px;
 }
 #signinArt{
-    height: 303%;
+    height: 200%;
     top: 83%;
     background-color: #cacacabb;
 }
@@ -119,3 +119,9 @@ body,html{
     background-color: teal;
     margin-bottom: 15px;
 }
+
+@media only screen and (max-width: 600px) {
+    body, html{
+        height: 120%;
+    }
+  }

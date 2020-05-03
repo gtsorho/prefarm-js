@@ -126,3 +126,5 @@ $('#toggle > button').click(function() {
   $('#chartSec').toggle( ix === 0 );
   $('#ndviSec').toggle( ix === 1 );
 });
+var modalDlg = document.querySelector('#image-modal');
+ modalDlg.classList.add('is-active');
