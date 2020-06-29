@@ -96,8 +96,6 @@ channel.bind('my-event', function(data) {
   }
   
   $('#notify').html(y)
-  
-
 }    
   
 });
