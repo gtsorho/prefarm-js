@@ -38,6 +38,12 @@ channel.bind('my-event', function(data) {
   $('#rain_val').html(data.message.singleData.rain)
   $('#moisture_val').html(data.message.singleData.moisture)
 
+  if (parseInt(data.message.message.temperature) > 50){
+    $('#messageTemp').html("warning, field temeprature above normal")
+  }else{
+    $('#messageTemp').html("field temeprature normal")
+  }
+
 }else if(data.message.status == 'single'){
 
   x=x+1
@@ -69,14 +75,12 @@ channel.bind('my-event', function(data) {
   $('#rain_val').html(data.message.message.rain)
   $('#moisture_val').html(data.message.message.moisture)
 
+  
   if (parseInt(data.message.message.temperature) > 50){
     $('#messageTemp').html("warning, field temeprature above normal")
   }else{
     $('#messageTemp').html("field temeprature normal")
   }
-
-
-
 
 }    
   
