@@ -6,7 +6,9 @@
   console.log(token)
 
 var x
-var pusher = new Pusher('b498ff736977877837d3');
+var pusher = new Pusher('b498ff736977877837d3', {
+  cluster: 'mt1'
+});
 var channel = pusher.subscribe('my-channel'+ user_id);
 channel.bind('my-event', function(data) {
   console.log(data)
