@@ -67,7 +67,7 @@ channel.bind('my-event', function(data) {
   $('#humidity_val').html(data.message.message.humidity)
   $('#light_val').html(data.message.message.light)
   $('#rain_val').html(data.message.message.rain)
-  $('#moisture_val').html(data.message.message.moisture)z
+  $('#moisture_val').html(data.message.message.moisture)
 
 }    
   
