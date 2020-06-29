@@ -6,7 +6,7 @@
   console.log(token)
 
 var x
-var pusher = new Pusher('6fbd3a4d78bbe2c53fbd');
+var pusher = new Pusher('f6d3078441ec3dba5d13');
 var channel = pusher.subscribe('my-channel'+ user_id);
 channel.bind('my-event', function(data) {
   console.log(data)
