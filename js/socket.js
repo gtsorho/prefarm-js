@@ -69,6 +69,15 @@ channel.bind('my-event', function(data) {
   $('#rain_val').html(data.message.message.rain)
   $('#moisture_val').html(data.message.message.moisture)
 
+  if (data.message.message.temperature > 50){
+    console.log("greater than 50");
+  }else{
+    console.log("less than 100");
+  }
+
+
+
+
 }    
   
 });
