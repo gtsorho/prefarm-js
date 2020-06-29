@@ -38,28 +38,6 @@ channel.bind('my-event', function(data) {
   $('#rain_val').html(data.message.singleData.rain)
   $('#moisture_val').html(data.message.singleData.moisture)
 
-  // var y; 
-  // if (parseInt(data.message.message.temperature) > 50){
-  //   $('#messageTemp').html("warning, field temeprature above normal")
-  //   y=y+1
-  // }else{
-  //   $('#messageTemp').hide()
-  // }
-  // if (parseInt(data.message.message.moisture) > 50){
-  //   $('#messageMoisture').html("warning, field moisture below normal")
-  //   y=y+1
-  // }else{
-  //   $('#messageMoisture').hide()
-  // }
-  // if (parseInt(data.message.message.rain) > 50){
-  //   $('#messageRain').html("Rain levels maximum, !don't irrigate")
-  //   y=y+1
-  // }else{
-  //   $('#messageRain').hide()
-  // }
-  
-  // $('#notify').html(y)
-
 }else if(data.message.status == 'single'){
 
   x=x+1
@@ -89,29 +67,8 @@ channel.bind('my-event', function(data) {
   $('#humidity_val').html(data.message.message.humidity)
   $('#light_val').html(data.message.message.light)
   $('#rain_val').html(data.message.message.rain)
-  $('#moisture_val').html(data.message.message.moisture)
+  $('#moisture_val').html(data.message.message.moisture)z
 
-  // var y; 
-  // if (parseInt(data.message.message.temperature) > 50){
-  //   $('#messageTemp').html("warning, field temeprature above normal")
-  //   y=y+1
-  // }else{
-  //   $('#messageTemp').hide()
-  // }
-  // if (parseInt(data.message.message.moisture) > 50){
-  //   $('#messageMoisture').html("warning, field moisture below normal")
-  //   y=y+1
-  // }else{
-  //   $('#messageMoisture').hide()
-  // }
-  // if (parseInt(data.message.message.rain) > 50){
-  //   $('#messageRain').html("Rain levels maximum, !don't irrigate")
-  //   y=y+1
-  // }else{
-  //   $('#messageRain').hide()
-  // }
-  
-  // $('#notify').html(y)
 }    
   
 });
