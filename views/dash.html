@@ -706,13 +706,13 @@
       })
     })
 
-    $('#avgbtn').click(function (e) {
+    $('#avgbtn').unbind('click').bind('click',function (e) {
       e.preventDefault();
       $.ajax({
-        url: "http://127.0.0.1:8000/api/avg",
+        url: "https://prefarmapi.herokuapp.com/api/avg",
         method: 'get',
         headers: {
-          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjNjNjBlMzdhOGM5M2YxNjc0NjQxNDNkNDI5MmUzYTVlYmVmMmM4ZjEzYzQzZjI3MjgzYmRhMzU4MThlNWZkOTMxOGZhOWE1Njc2OTYzMGFlIn0.eyJhdWQiOiIxIiwianRpIjoiM2M2MGUzN2E4YzkzZjE2NzQ2NDE0M2Q0MjkyZTNhNWViZWYyYzhmMTNjNDNmMjcyODNiZGEzNTgxOGU1ZmQ5MzE4ZmE5YTU2NzY5NjMwYWUiLCJpYXQiOjE1OTM2Nzc2MDAsIm5iZiI6MTU5MzY3NzYwMCwiZXhwIjoxNjI1MjEzNjAwLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.zY8O-3aTCr7SVzaP0lhBZusNVQc9GtaHS-AeevA0c8vpQ5EtD9wL2FK19TruHfYAvubFjzcSNbE62d4evOaVzXmVqFU86SBhdqq_D9NCyPn8ZS900kJlpYrAeUNHm16l-PLLuyrs23Q4Zec_3Bi9RG7kHpgY9Lv9rySnuEjlf7FQVHh03bnx-BVFqa0iiCEyi8OjZ7bCeatTCasp0G1oWZQxreBe4eQ_CWtyYbSeWXGzk_8PTqMWqEQzsJD1vmxCvjOMbYE12NW7vZglIMuKR1Ouw_Vf0CpQw6sSB1XgKdaJC87U6HMmcIJM7edccy2HgqdIFJa8BuYPe7-dYBRM7cX1k3oe5BQoQkkFsIgi45dw8WBv80zNs2v4r2UTzPJoSPBc2EoxbxfyRkDhivtyyVew_CT7o5riNoOQsKs6Lcotfj3Yg09FEKsAFt4F8wIzv2k459UZaRO72sTUAT7fmKjKkWP2X0E6tp3Z5BcxK4axrkhQDv6IOO__NapkrZnsAXUfQ8vjHaqN-auGRxu_JdJ79cuE4W4A_cSosCXmGVCxNkLzFj_ibUWpE1LbgmZ_fx610dTlZj5pDt1b_PomGhCTF0ZkOEfhW-GBKnCENjnKZ5m4SqCMqmZHU1eUWpIBc5PVDxRDk7S9l8xVSE-ahLsyr8gcE_xgQUjzevWtAZU"
+          "Authorization": `Bearer ${token}`
         },
         dataType: 'json',
         success: function (response) {
