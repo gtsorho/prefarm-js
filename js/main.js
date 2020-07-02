@@ -106,17 +106,31 @@ function controlcenter(){
 function chartbtn(){
     var chart = document.getElementById("chartbtn");
     var ndvi = document.getElementById("ndvibtn");
+    var avg = document.getElementById("avgbtn");
 
     ndvi.setAttribute('class', 'button');
     chart.setAttribute('class','button is-success')
+    avg.setAttribute('class','button');
 
 }
 function ndvibtn(){
   var ndvi = document.getElementById("ndvibtn");
   var chart = document.getElementById("chartbtn");
+  var avg = document.getElementById("avgbtn");
 
   ndvi.setAttribute('class', 'button is-danger');
   chart.setAttribute('class','button')
+  avg.setAttribute('class','button');
+
+}
+function avgbtn(){
+  var ndvi = document.getElementById("ndvibtn");
+  var chart = document.getElementById("chartbtn");
+  var avg = document.getElementById("avgbtn");
+
+  ndvi.setAttribute('class', 'button');
+  chart.setAttribute('class','button')
+  avg.setAttribute('class','button is-primary');
 
 }
 
@@ -124,7 +138,8 @@ $('#toggle > button').click(function() {
   var ix = $(this).index();
   
   $('#chartSec').toggle( ix === 0 );
-  $('#ndviSec').toggle( ix === 1 );
+  $('#ndviSec').toggle( ix === 2 );
+  $('#averageSec').toggle( ix === 1 );
 });
 var modalDlg = document.querySelector('#image-modal');
  modalDlg.classList.add('is-active');

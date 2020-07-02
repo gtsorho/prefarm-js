@@ -107,6 +107,10 @@ body,html{
     height: 35px;
     font-size: medium;
 }
+#avgbtn{
+    height: 35px;
+    font-size: medium;
+}
 div#image-container {
     text-align: center;
 }
@@ -122,6 +126,9 @@ div#colorbar-container canvas#colorbar {
     vertical-align: middle;
 }
 #ndviSec{
+    display: none;
+}
+#averageSec{
     display: none;
 }
 #overlay {

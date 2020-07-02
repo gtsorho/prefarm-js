@@ -55,7 +55,7 @@
   
   <div class="columns">
      <!-- column to the left -->
-     <div class="column is-two-thirds" id="datacol">
+    <div class="column is-two-thirds" id="datacol">
       <div class="container">
         <nav class="navbar " role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
@@ -67,12 +67,14 @@
 
           <div class="buttons has-addons navbar-brand" id="toggle" style="margin-top: 4%;margin-left: 54%;">
             <button class="button is-success " id="chartbtn" onclick="chartbtn()">Chart</button>
+            <button class="button" id="avgbtn" onclick="avgbtn()">M. Average</button>
             <button class="button" id="ndvibtn" onclick="ndvibtn()">NDVI</button>
           </div>
         </nav>
-
       </div>
-<hr style="background-color: #686666; height: 1px; margin-top: 0px; width: 60%; margin-left: 15%;">
+
+      <hr style="background-color: #686666; height: 1px; margin-top: 0px; width: 60%; margin-left: 15%;">
+      <!-- live chart section -->
       <div class="container" id="chartSec">
         <canvas id="myChart"></canvas>
 
@@ -111,8 +113,9 @@
           </nav>
         </div>
       </div>
+      <!-- end of chart section -->
 
-      
+      <!-- ndvi section -->
         <div class="container page" id="ndviSec" style="padding-top:10px;">
           <div class="content">
             <div class="well">
@@ -175,7 +178,51 @@
 
 
         </div>
+        <!-- end of ndvi section -->
       
+              <!-- average section -->
+      <div class="container" id="averageSec">
+        <canvas id="avgChart"></canvas>
+
+        <div class="box">
+          <div><center><b>Total Month Values</b></center></div> 
+          <hr style="margin: 0.5rem 0;">
+          <nav class="level">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Temprature</p>
+                <p class="title" id="avg_temp_val"></p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Humidity</p>
+                <p class="title" id="avg_humidity_val"></p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Rain</p>
+                <p class="title" id="avg_rain_val"></p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Moisture</p>
+                <p class="title" id="avg_moisture_val"></p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Light</p>
+                <p class="title" id="avg_light_val"></p>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <!-- end of average section -->
+
     </div>
     <!-- end of column to the left -->
 
@@ -361,6 +408,7 @@
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/Chart.bundle.js"></script>
 <script src="js/main.js"></script>
+<script src="js/average.js"></script>
 
 <script>
   var ctx = document.getElementById('myChart').getContext('2d');
@@ -530,6 +578,10 @@
 
 
 
+
+
+  
+
   $(document).ready(function () {
     
     var token = localStorage.getItem('access_token')
@@ -653,6 +705,46 @@
         }
       })
     })
+
+    $('#avgbtn').click(function (e) {
+      e.preventDefault();
+      $.ajax({
+        url: "https://prefarmapi.herokuapp.com/api/avg",
+        method: 'get',
+        headers: {
+          "Authorization": `Bearer ${token}`
+        },
+        dataType: 'json',
+        success: function (response) {
+           console.log(response)
+          $.each(response.averageData, function (i) {
+            $.each(response.averageData[i], function (j) {
+              console.log(response.averageData[i][j])
+              // myChart.data.labels.push(data.message.message[i].created_at);
+              avgChart.data.datasets[0].data.push(response.averageData[i][j].temperatureAvg);
+              avgChart.data.datasets[1].data.push(response.averageData[i][j].humidityAgv);
+              avgChart.data.datasets[2].data.push(response.averageData[i][j].rainAvg);
+              avgChart.data.datasets[3].data.push(response.averageData[i][j].moistureAvg);
+              avgChart.data.datasets[4].data.push(response.averageData[i][j].lightAvg);
+              avgChart.update();
+            })
+          })
+
+          $.each(response.dateData, function(k){
+            avgChart.data.labels.push(response.dateData[k]);
+            avgChart.update();
+          })
+       console.log(response.monthlyMessage[0].humidityAvg)
+              $('#avg_temp_val').html(response.monthlyMessage[0].temperatureAvg.toFixed(2))
+              $('#avg_humidity_val').html(response.monthlyMessage[0].humidityAgv.toFixed(2))
+              $('#avg_light_val').html(response.monthlyMessage[0].lightAvg.toFixed(2))
+              $('#avg_rain_val').html(response.monthlyMessage[0].rainAvg.toFixed(2))
+              $('#avg_moisture_val').html(response.monthlyMessage[0].moistureAvg.toFixed(2))
+
+        }
+      })
+    })
+
   });
 
 </script>
