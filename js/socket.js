@@ -13,11 +13,11 @@ channel.bind('my-event', function(data) {
   if(data.message.status == 'plural'){
   $.each(data.message.message, function (i) {
     myChart.data.labels.push(data.message.message[i].created_at);
-    myChart.data.datasets[0].data.push(data.message.message[i].temperature);
-    myChart.data.datasets[1].data.push(data.message.message[i].humidity);
-    myChart.data.datasets[2].data.push(data.message.message[i].rain);
-    myChart.data.datasets[3].data.push(data.message.message[i].moisture);
-    myChart.data.datasets[4].data.push(data.message.message[i].light);
+    myChart.data.datasets[0].data.push(parseFloat(data.message.message[i].temperature));
+    myChart.data.datasets[1].data.push(parseFloat(data.message.message[i].humidity));
+    myChart.data.datasets[2].data.push(parseFloat(data.message.message[i].rain));
+    myChart.data.datasets[3].data.push(parseFloat(data.message.message[i].moisture));
+    myChart.data.datasets[4].data.push(parseFloat(data.message.message[i].light));
     myChart.update();
   })
 
@@ -44,11 +44,11 @@ channel.bind('my-event', function(data) {
   console.log(x)
 
   myChart.data.labels.push(data.message.message.created_at);
-  myChart.data.datasets[0].data.push(data.message.message.temperature);
-  myChart.data.datasets[1].data.push(data.message.message.humidity);
-  myChart.data.datasets[2].data.push(data.message.message.rain);
-  myChart.data.datasets[3].data.push(data.message.message.moisture);
-  myChart.data.datasets[4].data.push(data.message.message.light);
+  myChart.data.datasets[0].data.push(parseFloat(data.message.message.temperature));
+  myChart.data.datasets[1].data.push(parseFloat(data.message.message.humidity));
+  myChart.data.datasets[2].data.push(parseFloat(data.message.message.rain));
+  myChart.data.datasets[3].data.push(parseFloat(data.message.message.moisture));
+  myChart.data.datasets[4].data.push(parseFloat(data.message.message.light));
   myChart.update();
 
   if(x>20){
