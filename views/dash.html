@@ -706,13 +706,13 @@
       })
     })
 
-    $('#avgbtn').unbind('click').bind('click',function (e) {
+    $('#avgbtn').click(function (e) {
       e.preventDefault();
       $.ajax({
         url: "https://prefarmapi.herokuapp.com/api/avg",
         method: 'get',
         headers: {
-          "Authorization": `Bearer ${token}`
+          
         },
         dataType: 'json',
         success: function (response) {
@@ -734,7 +734,7 @@
             avgChart.data.labels.push(response.dateData[k]);
             avgChart.update();
           })
-       console.log(response.monthlyMessage[0].humidityAvg)
+      //  console.log(response.monthlyMessage[0].humidityAvg)
               $('#avg_temp_val').html(response.monthlyMessage[0].temperatureAvg.toFixed(2))
               $('#avg_humidity_val').html(response.monthlyMessage[0].humidityAgv.toFixed(2))
               $('#avg_light_val').html(response.monthlyMessage[0].lightAvg.toFixed(2))
