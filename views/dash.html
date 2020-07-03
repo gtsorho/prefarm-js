@@ -719,14 +719,13 @@
            console.log(response)
           $.each(response.averageData, function (i) {
             $.each(response.averageData[i], function (j) {
-              console.log(response.averageData[i][j])
-              // myChart.data.labels.push(data.message.message[i].created_at);
-              avgChart.data.datasets[0].data.push(parseFloat(response.averageData[i][j].temperatureAvg));
-              avgChart.data.datasets[1].data.push(parseFloat(response.averageData[i][j].humidityAgv));
-              avgChart.data.datasets[2].data.push(parseFloat(response.averageData[i][j].rainAvg));
-              avgChart.data.datasets[3].data.push(parseFloat(response.averageData[i][j].moistureAvg));
-              avgChart.data.datasets[4].data.push(parseFloat(response.averageData[i][j].lightAvg));
+              avgChart.data.datasets[0].data.push(response.averageData[i][j].temperatureavg);
+              avgChart.data.datasets[1].data.push(response.averageData[i][j].humidityagv);
+              avgChart.data.datasets[2].data.push(response.averageData[i][j].rainavg);
+              avgChart.data.datasets[3].data.push(response.averageData[i][j].moistureavg);
+              avgChart.data.datasets[4].data.push(response.averageData[i][j].lightavg);
               avgChart.update();
+
             })
           })
 
@@ -734,12 +733,12 @@
             avgChart.data.labels.push(response.dateData[k]);
             avgChart.update();
           })
-      //  console.log(response.monthlyMessage[0].humidityAvg)
-              $('#avg_temp_val').html(response.monthlyMessage[0].temperatureAvg.toFixed(2))
-              $('#avg_humidity_val').html(response.monthlyMessage[0].humidityAgv.toFixed(2))
-              $('#avg_light_val').html(response.monthlyMessage[0].lightAvg.toFixed(2))
-              $('#avg_rain_val').html(response.monthlyMessage[0].rainAvg.toFixed(2))
-              $('#avg_moisture_val').html(response.monthlyMessage[0].moistureAvg.toFixed(2))
+       console.log(response.monthlyMessage[0].humidityagv)
+              $('#avg_temp_val').html(parseFloat(response.monthlyMessage[0].temperatureavg).toFixed(2))
+              $('#avg_humidity_val').html(parseFloat(response.monthlyMessage[0].humidityagv).toFixed(2))
+              $('#avg_light_val').html(parseFloat(response.monthlyMessage[0].lightavg).toFixed(2))
+              $('#avg_rain_val').html(parseFloat(response.monthlyMessage[0].rainavg).toFixed(2))
+              $('#avg_moisture_val').html(parseFloat(response.monthlyMessage[0].moistureavg).toFixed(2))
 
         }
       })
