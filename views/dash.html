@@ -706,7 +706,7 @@
       })
     })
 
-    $('#avgbtn').click(function (e) {
+    $('#avgbtn').unbind('click').bind('click', function (e) {
       e.preventDefault();
       $.ajax({
         url: "https://prefarmapi.herokuapp.com/api/avg",
