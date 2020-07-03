@@ -712,7 +712,7 @@
         url: "https://prefarmapi.herokuapp.com/api/avg",
         method: 'get',
         headers: {
-          
+          "Authorization": `Bearer ${token}`
         },
         dataType: 'json',
         success: function (response) {
