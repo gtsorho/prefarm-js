@@ -250,7 +250,6 @@
         <a class="panel-block" id="notes" onclick="notification()">
           <span class="fa-layers fa-fw">
             <i class="fas fa-bell fa-2x" aria-hidden="true"></i>
-            <span class="fa-layers-counter fa-3x" style="background:Tomato">10</span>
           </span>
           &nbsp;&nbsp;Notifications
         </a>
@@ -335,26 +334,11 @@
         </div>
         <!-- end of usersettings -->
         <div class="box" id="notification">
-          <div class="notification is-primary">
-            <button class="delete"></button>
-            Primar lorem ipsum dolor sit amet, consectetur
-          </div>
 
-          <div class="notification is-link">
+          <div class="notification is-danger" id="notify" style="display: none;">
             <button class="delete"></button>
-            Primar lorem ipsum dolor sit amet, consectetur
+           <p id="notify_txt"></p>
           </div>
-
-          <div class="notification is-info">
-            <button class="delete"></button>
-            Primar lorem ipsum dolor sit amet, consectetur
-          </div>
-
-          <div class="notification is-success">
-            <button class="delete"></button>
-            Primar lorem ipsum dolor sit amet, consectetur
-          </div>
-
 
         </div>
         <div class="box" id="controlcenter">
@@ -378,8 +362,8 @@
           </form>
           <br>
           <div class="buttons has-addons">
-            <button class="button is-success " id="onbtn" onclick="onbtn()">On</button>
-            <button class="button" id="offbtn" onclick="offbtn()">Off</button>
+            <button class="button" id="onbtn" onclick="onbtn()">On</button>
+            <button class="button is-dark" id="offbtn" onclick="offbtn()">Off</button>
           </div>
         </div>
 
@@ -770,6 +754,13 @@
 
     })
 
+
+    
+     if(data.message.message.moisture < response.monthlyMessage[0].moistureavg){
+
+      $("#notify").show()
+        $("#notify_txt").text("Moisture level below Average" + response.monthlyMessage[0].moistureavg)
+    }
 
   });
 
