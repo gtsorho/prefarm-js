@@ -364,13 +364,13 @@
             <div class="field">
               <div class="control">
                 <div class="select  is-primary">
-                  <select>
-                    <option value="">30min</option>
-                    <option value="">1hour</option>
-                    <option value="">1hr30min</option>
-                    <option value="">2hrs</option>
-                    <option value="">2hrs30min</option>
-                    <option value="">3hrs</option>
+                  <select id="pumpTime">
+                    <option value="30">30min</option>
+                    <option value="60">1hour</option>
+                    <option value="90">1hr30min</option>
+                    <option value="120">2hrs</option>
+                    <option value="150">2hrs30min</option>
+                    <option value="180">3hrs</option>
                   </select>
                 </div>
               </div>
@@ -743,6 +743,33 @@
         }
       })
     })
+
+    $('#onbtn').click(function(e){
+      e.preventDefault()
+      var pumpTime = $("#pumpTime").children("option:selected").val()
+      $.ajax({
+        url: 'https://api.thingspeak.com/update?api_key=X3FRBGU7L46F8DZS&field1=1&field2=1&&field3='+ pumpTime,
+        method: 'get',
+        dataType: 'json',
+        success:function(response) {
+          console.log(response)
+        }
+      })
+       
+    })
+    $('#offbtn').click(function(e){
+      e.preventDefault()
+      $.ajax({
+        url: "https://api.thingspeak.com/update?api_key=X3FRBGU7L46F8DZS&field1=0&field2=0&&field3=0",
+        method: 'get',
+        dataType: 'json',
+        success:function(response) {
+          console.log(response)
+        }
+      })
+
+    })
+
 
   });
 
