@@ -732,7 +732,7 @@
       e.preventDefault()
       var pumpTime = $("#pumpTime").children("option:selected").val()
       $.ajax({
-        url: 'https://api.thingspeak.com/update?api_key=X3FRBGU7L46F8DZS&field1=1&field2=1&&field3='+ pumpTime,
+        url: 'https://api.thingspeak.com/update?api_key=X3FRBGU7L46F8DZS&field1=1&field3='+ pumpTime,
         method: 'get',
         dataType: 'json',
         success:function(response) {
@@ -744,7 +744,7 @@
     $('#offbtn').click(function(e){
       e.preventDefault()
       $.ajax({
-        url: "https://api.thingspeak.com/update?api_key=X3FRBGU7L46F8DZS&field1=0&field2=0&&field3=0",
+        url: "https://api.thingspeak.com/update?api_key=X3FRBGU7L46F8DZS&field1=0&field3=0",
         method: 'get',
         dataType: 'json',
         success:function(response) {
